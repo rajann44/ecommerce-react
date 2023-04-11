@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Products from "./components/Products";
 import ProductDetail from "./components/ProductDetail";
 import { Route, Routes } from "react-router-dom";
+import Checkout from "./components/Checkout";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           path="/product"
           element={<ProductDetail></ProductDetail>}
         ></Route>
+        <Route path="/checkout" element={<Checkout></Checkout>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
