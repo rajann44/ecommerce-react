@@ -96,7 +96,7 @@ const Checkout = () => {
             <div class="flex flex-col rounded-lg bg-white sm:flex-row">
               <img
                 class="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                src={require(`../assets/${propsData.image}`)}
+                src={propsData.image}
                 alt=""
               />
               <div class="flex w-full flex-col px-4 py-4">

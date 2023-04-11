@@ -23,7 +23,16 @@ const Header = () => {
             className="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
             viewBox="0 0 24 24"
           >
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            {/* <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path> */}
+            <rect
+              x="10"
+              y="10"
+              width="80"
+              height="80"
+              stroke="#ffa07a"
+              strokeWidth="20"
+              fill="none"
+            />
           </svg>
           <Link to="/">
             <span className="ml-3 text-xl">Ecom-Reactify</span>
