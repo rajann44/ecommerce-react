@@ -5,13 +5,17 @@ import Products from "./components/Products";
 import ProductDetail from "./components/ProductDetail";
 import { Route, Routes } from "react-router-dom";
 import Checkout from "./components/Checkout";
+import Banner from "./components/Banner";
 
 function App() {
   return (
     <div>
       <Header></Header>
       <Routes>
-        <Route path="/" element={<Products></Products>}></Route>
+        <Route
+          path="/"
+          element={[<Banner></Banner>, <Products></Products>]}
+        ></Route>
         <Route
           path="/product"
           element={<ProductDetail></ProductDetail>}
