@@ -26,7 +26,7 @@ const Header = () => {
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
           </svg>
           <Link to="/">
-            <span className="ml-3 text-xl">Tailblocks</span>
+            <span className="ml-3 text-xl">Ecom-Reactify</span>
           </Link>
         </a>
         <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
