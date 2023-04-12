@@ -12,22 +12,30 @@ const Footer = () => {
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            class="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
+            className="w-10 h-10 text-white p-2 bg-blue-500 rounded-full"
             viewBox="0 0 24 24"
           >
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            <rect
+              x="10"
+              y="10"
+              width="80"
+              height="80"
+              stroke="#ffa07a"
+              strokeWidth="20"
+              fill="none"
+            />
           </svg>
-          <span class="ml-3 text-xl">Tailblocks</span>
+          <span class="ml-3 text-xl">Ecom-Reactify</span>
         </a>
         <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-          © 2020 Tailblocks —
+          © 2023 Reactified —
           <a
             href="https://twitter.com/knyttneve"
             class="text-gray-600 ml-1"
             rel="noopener noreferrer"
             target="_blank"
           >
-            @knyttneve
+            @rajann44
           </a>
         </p>
         <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">

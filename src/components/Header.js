@@ -54,9 +54,9 @@ const Header = () => {
               </svg>
             </button>
           </Link>
-          <Link to="/login">
+          <Link to="/signin">
             <button className="inline-flex items-center bg-blue-500 text-cyan-50 border-0 py-1 px-3 mx-2 focus:outline-none hover:bg-green-500 rounded text-base mt-4 md:mt-0">
-              Login
+              Sign in
               <svg
                 fill="none"
                 stroke="currentColor"
