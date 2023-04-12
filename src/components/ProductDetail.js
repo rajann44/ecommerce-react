@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { UserContext } from "../context/UserProvider";
 
 const ProductDetail = () => {
+  const { user } = useContext(UserContext);
   const location = useLocation();
   const propsData = location.state;
 
@@ -175,7 +176,12 @@ const ProductDetail = () => {
                 onClick={() => addProductToCart(propsData)}
               >
                 {/* <Link to="/checkout" state={propsData}> */}
-                Add to Cart
+                {user.products.filter((product) => product.id === propsData.id)
+                  .length == 0
+                  ? "Add to cart"
+                  : user.products.filter(
+                      (product) => product.id === propsData.id
+                    ).length + " Added"}
                 {/* </Link> */}
               </button>
               <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
