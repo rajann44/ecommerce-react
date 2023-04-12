@@ -1,14 +1,19 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/UserProvider";
 
-const Checkout = () => {
+const Cart = () => {
   const { user, removeProductFromCart } = useContext(UserContext);
+  let productSubTotal = user.products.reduce(
+    (accumulator, product) =>
+      accumulator + parseFloat(product.price.replace("$", "")),
+    0
+  );
 
   return (
     <div>
       <div class="flex flex-col items-center border-b bg-white py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
         <a href="#" class="text-2xl font-bold text-gray-800">
-          Checkout page
+          Your Cart Summary
         </a>
         <div class="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
           <div class="relative">
@@ -339,7 +344,7 @@ const Checkout = () => {
             <div class="mt-6 border-t border-b py-2">
               <div class="flex items-center justify-between">
                 <p class="text-sm font-medium text-gray-900">Subtotal</p>
-                <p class="font-semibold text-gray-900">$399.00</p>
+                <p class="font-semibold text-gray-900">${productSubTotal}</p>
               </div>
               <div class="flex items-center justify-between">
                 <p class="text-sm font-medium text-gray-900">Shipping</p>
@@ -348,7 +353,9 @@ const Checkout = () => {
             </div>
             <div class="mt-6 flex items-center justify-between">
               <p class="text-sm font-medium text-gray-900">Total</p>
-              <p class="text-2xl font-semibold text-gray-900">$408.00</p>
+              <p class="text-2xl font-semibold text-gray-900">
+                ${productSubTotal + 8}
+              </p>
             </div>
           </div>
           <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
@@ -360,4 +367,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default Cart;

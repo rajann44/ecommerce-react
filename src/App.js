@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Products from "./components/Products";
 import ProductDetail from "./components/ProductDetail";
 import { Route, Routes } from "react-router-dom";
-import Checkout from "./components/Checkout";
+import Cart from "./components/Cart";
 import SignIn from "./components/SignInUp/SignIn";
 import SignUp from "./components/SignInUp/SignUp";
 import TopBanner from "./components/Banner/TopBanner";
@@ -30,7 +30,7 @@ function App() {
         ></Route>
         <Route path="/signin" element={<SignIn></SignIn>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
-        <Route path="/checkout" element={<Checkout></Checkout>}></Route>
+        <Route path="/cart" element={<Cart></Cart>}></Route>
       </Routes>
       <Footer></Footer>
     </UserProvider>
