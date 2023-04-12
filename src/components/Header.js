@@ -1,7 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserProvider";
 
 const Header = () => {
+  const { user, logout } = useContext(UserContext);
+  const navigate = useNavigate();
+
   return (
     <header className="text-gray-600 body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -38,6 +42,11 @@ const Header = () => {
           </Link>
         </a>
         <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+          {user?.loginStatus && (
+            <div className="inline-flex items-center py-1 px-3 text-base mt-4 md:mt-0">
+              Hello! {user.email.match(/^([^@]*)@/)[1].toUpperCase()}
+            </div>
+          )}
           <Link to="/checkout">
             <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
               Cart
@@ -54,22 +63,47 @@ const Header = () => {
               </svg>
             </button>
           </Link>
-          <Link to="/signin">
-            <button className="inline-flex items-center bg-blue-500 text-cyan-50 border-0 py-1 px-3 mx-2 focus:outline-none hover:bg-green-500 rounded text-base mt-4 md:mt-0">
-              Sign in
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                className="w-4 h-4 ml-1"
-                viewBox="0 0 24 24"
+          {user?.loginStatus ? (
+            <Link to="/">
+              <button
+                className="inline-flex items-center bg-blue-500 text-cyan-50 border-0 py-1 px-3 mx-2 focus:outline-none hover:bg-green-500 rounded text-base mt-4 md:mt-0"
+                onClick={() => {
+                  logout();
+                  navigate("/");
+                }}
               >
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </button>
-          </Link>
+                Sign out
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  className="w-4 h-4 ml-1"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </Link>
+          ) : (
+            <Link to="/signin">
+              <button className="inline-flex items-center bg-blue-500 text-cyan-50 border-0 py-1 px-3 mx-2 focus:outline-none hover:bg-green-500 rounded text-base mt-4 md:mt-0">
+                Sign in
+                <svg
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  className="w-4 h-4 ml-1"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </header>

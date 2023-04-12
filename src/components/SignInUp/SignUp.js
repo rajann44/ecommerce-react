@@ -1,7 +1,30 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { signupAndUploadUserInfoToDb } from "../../firebase/Database/Users";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
+  const [signupForm, setSignupForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    // Call the function like this:
+    (async () => {
+      const result = await signupAndUploadUserInfoToDb(signupForm);
+      console.log(result);
+      if (result !== null) {
+        navigate("/signin");
+        console.log("User signup successful");
+      } else {
+        console.log("User signup failed");
+      }
+    })();
+  };
+
   return (
     <div class="flex min-h-screen w-full items-center justify-center text-gray-600 bg-gray-50">
       <div class="relative">
@@ -91,7 +114,7 @@ const SignUp = () => {
               Please sign-up to create your account
             </p>
 
-            <form id="" class="mb-4" action="#" method="POST">
+            <form id="" class="mb-4">
               <div class="mb-4">
                 <label
                   for="email"
@@ -106,6 +129,9 @@ const SignUp = () => {
                   name="email-username"
                   placeholder="Enter your email"
                   autofocus=""
+                  onChange={(event) =>
+                    setSignupForm({ ...signupForm, email: event.target.value })
+                  }
                 />
               </div>
               <div class="mb-4">
@@ -124,13 +150,19 @@ const SignUp = () => {
                     class="relative block flex-auto cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-blue-500 focus:bg-white focus:text-gray-600 focus:shadow"
                     name="password"
                     placeholder="············"
+                    onChange={(event) =>
+                      setSignupForm({
+                        ...signupForm,
+                        password: event.target.value,
+                      })
+                    }
                   />
                 </div>
               </div>
               <div class="mb-4">
                 <button
                   class="grid w-full cursor-pointer select-none rounded-md border border-blue-500 bg-blue-500 py-2 px-5 text-center align-middle text-sm text-white shadow hover:border-blue-600 hover:bg-blue-600 hover:text-white focus:border-blue-600 focus:bg-blue-600 focus:text-white focus:shadow-none"
-                  type="submit"
+                  onClick={(e) => handleSignup(e)}
                 >
                   Sign up
                 </button>
@@ -144,8 +176,7 @@ const SignUp = () => {
                   href="#"
                   class="cursor-pointer text-blue-500 no-underline hover:text-blue-500"
                 >
-                  {" "}
-                  Login Here{" "}
+                  Login Here
                 </a>
               </p>
             </Link>

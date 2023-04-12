@@ -1,6 +1,6 @@
 import React from "react";
 
-const Banner = () => {
+const TopBanner = () => {
   return (
     <div class="mx-auto my-10 w-screen max-w-screen-xl px-4">
       <div class="to flex items-center rounded-xl bg-gradient-to-r from-blue-600 to-fuchsia-500 px-8 text-white shadow-lg">
@@ -47,4 +47,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default TopBanner;

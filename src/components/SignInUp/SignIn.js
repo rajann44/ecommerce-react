@@ -1,7 +1,28 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/UserProvider";
+import { validateIfUserPresentInDBAndSendUserDetails } from "../../firebase/Database/Users";
 
 const SignIn = () => {
+  const { login } = useContext(UserContext);
+  const navigate = useNavigate();
+  const [signInForm, setSignInForm] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleSignInAndSetUserInfoContext = (event) => {
+    event.preventDefault();
+    validateIfUserPresentInDBAndSendUserDetails(signInForm).then((result) => {
+      if (result) {
+        login({ ...result, loginStatus: true });
+        navigate("/");
+      } else {
+        login({ loginStatus: false });
+      }
+    });
+  };
+
   return (
     <div class="flex min-h-screen w-full items-center justify-center text-gray-600 bg-gray-50">
       <div class="relative">
@@ -91,7 +112,7 @@ const SignIn = () => {
               Please sign-in to access your account
             </p>
 
-            <form id="" class="mb-4" action="#" method="POST">
+            <form id="" class="mb-4">
               <div class="mb-4">
                 <label
                   for="email"
@@ -106,6 +127,9 @@ const SignIn = () => {
                   name="email-username"
                   placeholder="Enter your email"
                   autofocus=""
+                  onChange={(event) =>
+                    setSignInForm({ ...signInForm, email: event.target.value })
+                  }
                 />
               </div>
               <div class="mb-4">
@@ -130,6 +154,12 @@ const SignIn = () => {
                     class="relative block flex-auto cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-blue-500 focus:bg-white focus:text-gray-600 focus:shadow"
                     name="password"
                     placeholder="············"
+                    onChange={(event) =>
+                      setSignInForm({
+                        ...signInForm,
+                        password: event.target.value,
+                      })
+                    }
                   />
                 </div>
               </div>
@@ -137,6 +167,7 @@ const SignIn = () => {
                 <button
                   class="grid w-full cursor-pointer select-none rounded-md border border-blue-500 bg-blue-500 py-2 px-5 text-center align-middle text-sm text-white shadow hover:border-blue-600 hover:bg-blue-600 hover:text-white focus:border-blue-600 focus:bg-blue-600 focus:text-white focus:shadow-none"
                   type="submit"
+                  onClick={(event) => handleSignInAndSetUserInfoContext(event)}
                 >
                   Sign in
                 </button>

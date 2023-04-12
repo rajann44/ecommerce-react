@@ -5,18 +5,24 @@ import Products from "./components/Products";
 import ProductDetail from "./components/ProductDetail";
 import { Route, Routes } from "react-router-dom";
 import Checkout from "./components/Checkout";
-import Banner from "./components/Banner";
 import SignIn from "./components/SignInUp/SignIn";
 import SignUp from "./components/SignInUp/SignUp";
+import TopBanner from "./components/Banner/TopBanner";
+import BottomBanner from "./components/Banner/BottomBanner";
+import UserProvider from "./context/UserProvider";
 
 function App() {
   return (
-    <div>
+    <UserProvider>
       <Header></Header>
       <Routes>
         <Route
           path="/"
-          element={[<Banner></Banner>, <Products></Products>]}
+          element={[
+            <TopBanner></TopBanner>,
+            <Products></Products>,
+            <BottomBanner></BottomBanner>,
+          ]}
         ></Route>
         <Route
           path="/product"
@@ -27,7 +33,7 @@ function App() {
         <Route path="/checkout" element={<Checkout></Checkout>}></Route>
       </Routes>
       <Footer></Footer>
-    </div>
+    </UserProvider>
   );
 }
 
