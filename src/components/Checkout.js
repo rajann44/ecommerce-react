@@ -1,9 +1,8 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useContext } from "react";
+import { UserContext } from "../context/UserProvider";
 
 const Checkout = () => {
-  const location = useLocation();
-  const propsData = location.state;
+  const { user, removeProductFromCart } = useContext(UserContext);
 
   return (
     <div>
@@ -93,34 +92,50 @@ const Checkout = () => {
             Check your items. And select a suitable shipping method.
           </p>
           <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
-            <div class="flex flex-col rounded-lg bg-white sm:flex-row">
-              <img
-                class="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                src={propsData?.image}
-                alt=""
-              />
-              <div class="flex w-full flex-col px-4 py-4">
-                <span class="font-semibold">{propsData?.name}</span>
-                <span class="float-right text-gray-400">
-                  {propsData?.category}
-                </span>
-                <p class="text-lg font-bold">{propsData?.price}</p>
-              </div>
-            </div>
-            <div class="flex flex-col rounded-lg bg-white sm:flex-row">
-              <img
-                class="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                alt=""
-              />
-              <div class="flex w-full flex-col px-4 py-4">
-                <span class="font-semibold">
-                  Nike Air Max Pro 8888 - Super Light
-                </span>
-                <span class="float-right text-gray-400">42EU - 8.5US</span>
-                <p class="mt-auto text-lg font-bold">$238.99</p>
-              </div>
-            </div>
+            {user.products.length
+              ? user.products.map((productInCart, index) => (
+                  <div
+                    class="flex flex-col rounded-lg bg-white sm:flex-row"
+                    key={index}
+                  >
+                    <img
+                      class="m-2 h-24 w-28 rounded-md border object-cover object-center"
+                      src={productInCart?.image}
+                      alt=""
+                    />
+                    <div class="flex w-full flex-col px-4 py-4">
+                      <span class="font-semibold">{productInCart?.name}</span>
+                      <span class="float-right text-gray-400">
+                        {productInCart?.category}
+                      </span>
+                      <p class="text-lg font-bold">{productInCart?.price}</p>
+                    </div>
+                    <div class="flex w-full flex-col px-4 py-4 ">
+                      <button
+                        type="button"
+                        class="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-gray-900"
+                        onClick={() => removeProductFromCart(productInCart.id)}
+                      >
+                        <svg
+                          class="h-5 w-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                            class=""
+                          ></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                ))
+              : "Add Products to Cart to place order"}
           </div>
 
           <p class="mt-8 text-lg font-medium">Shipping Methods</p>

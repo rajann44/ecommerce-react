@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { UserContext } from "../context/UserProvider";
 
 const ProductDetail = () => {
   const location = useLocation();
   const propsData = location.state;
+
+  const { addProductToCart } = useContext(UserContext);
 
   return (
     <section class="text-gray-600 body-font overflow-hidden">
@@ -167,10 +170,13 @@ const ProductDetail = () => {
               <span class="title-font font-medium text-2xl text-gray-900">
                 {propsData.price}
               </span>
-              <button class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded">
-                <Link to="/checkout" state={propsData}>
-                  Buy Now
-                </Link>
+              <button
+                class="flex ml-auto text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded"
+                onClick={() => addProductToCart(propsData)}
+              >
+                {/* <Link to="/checkout" state={propsData}> */}
+                Add to Cart
+                {/* </Link> */}
               </button>
               <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                 <svg

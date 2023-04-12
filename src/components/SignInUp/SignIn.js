@@ -15,7 +15,7 @@ const SignIn = () => {
     event.preventDefault();
     validateIfUserPresentInDBAndSendUserDetails(signInForm).then((result) => {
       if (result) {
-        login({ ...result, loginStatus: true });
+        login({ ...result, loginStatus: true, products: [] });
         navigate("/");
       } else {
         login({ loginStatus: false });

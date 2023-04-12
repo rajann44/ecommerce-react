@@ -61,6 +61,9 @@ const Header = () => {
               >
                 <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
+              <span class="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-blue-500 rounded-full">
+                {user.products.length}
+              </span>
             </button>
           </Link>
           {user?.loginStatus ? (
