@@ -58,7 +58,7 @@ const ProfileFlyoutMenu = () => {
     --> */}
       <div
         class="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0"
-        style={{ display: isToggled ? "none" : "" }}
+        style={{ display: isToggled ? "" : "none" }}
       >
         <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
           <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
