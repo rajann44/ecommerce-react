@@ -11,30 +11,38 @@ import TopBanner from "./components/Banner/TopBanner";
 import BottomBanner from "./components/Banner/BottomBanner";
 import UserProvider from "./context/UserProvider";
 import Order from "./components/Order";
+import Notification from "./components/Notification/Notification";
+import NotificationProvider, {
+  NotificationContext,
+} from "./context/NotificationProvider";
+import { useContext } from "react";
 
 function App() {
   return (
     <UserProvider>
-      <Header></Header>
-      <Routes>
-        <Route
-          path="/"
-          element={[
-            <TopBanner></TopBanner>,
-            <Products></Products>,
-            <BottomBanner></BottomBanner>,
-          ]}
-        ></Route>
-        <Route
-          path="/product"
-          element={<ProductDetail></ProductDetail>}
-        ></Route>
-        <Route path="/signin" element={<SignIn></SignIn>}></Route>
-        <Route path="/signup" element={<SignUp></SignUp>}></Route>
-        <Route path="/cart" element={<Cart></Cart>}></Route>
-        <Route path="/order" element={<Order></Order>}></Route>
-      </Routes>
-      <Footer></Footer>
+      <NotificationProvider>
+        <Header></Header>
+        <Notification></Notification>
+        <Routes>
+          <Route
+            path="/"
+            element={[
+              <TopBanner></TopBanner>,
+              <Products></Products>,
+              <BottomBanner></BottomBanner>,
+            ]}
+          ></Route>
+          <Route
+            path="/product"
+            element={<ProductDetail></ProductDetail>}
+          ></Route>
+          <Route path="/signin" element={<SignIn></SignIn>}></Route>
+          <Route path="/signup" element={<SignUp></SignUp>}></Route>
+          <Route path="/cart" element={<Cart></Cart>}></Route>
+          <Route path="/order" element={<Order></Order>}></Route>
+        </Routes>
+        <Footer></Footer>
+      </NotificationProvider>
     </UserProvider>
   );
 }

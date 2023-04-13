@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { NotificationContext } from "../../context/NotificationProvider";
 import { UserContext } from "../../context/UserProvider";
-import { validateIfUserPresentInDBAndSendUserDetails } from "../../firebase/Database/Users";
+import { validateIfUserPresentInDBAndSendUserDetails } from "../../firebase/Database/UsersFirebase";
 
 const SignIn = () => {
   const { login } = useContext(UserContext);
+  const { triggerNotification } = useContext(NotificationContext);
   const navigate = useNavigate();
   const [signInForm, setSignInForm] = useState({
     email: "",
@@ -16,6 +18,7 @@ const SignIn = () => {
     validateIfUserPresentInDBAndSendUserDetails(signInForm).then((result) => {
       if (result) {
         login({ ...result, loginStatus: true, products: [] });
+        triggerNotification("Login Successful");
         navigate("/");
       } else {
         login({ loginStatus: false });

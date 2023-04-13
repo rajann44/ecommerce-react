@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/UserProvider";
+import {
+  calculateCartTotal,
+  createOrder,
+} from "../firebase/Database/OrdersFirebase";
 const Cart = () => {
   const { user, removeProductFromCart } = useContext(UserContext);
-  let productSubTotal = user.products.reduce(
-    (accumulator, product) =>
-      accumulator + parseFloat(product.price.replace("$", "")),
-    0
-  );
 
   return (
     <div>
@@ -159,13 +158,13 @@ const Cart = () => {
               >
                 <img
                   class="w-14 object-contain"
-                  src="/images/naorrAeygcJzX0SyNI4Y0.png"
+                  src="https://assets.dpdhl-brands.com/guides/dhl/guides/design-basics/logo-and-claim/logo/versions-01.png"
                   alt=""
                 />
                 <div class="ml-5">
-                  <span class="mt-2 font-semibold">Fedex Delivery</span>
+                  <span class="mt-2 font-semibold">DHL Delivery</span>
                   <p class="text-slate-500 text-sm leading-6">
-                    Delivery: 2-4 Days
+                    Delivery: 2-3 Days
                   </p>
                 </div>
               </label>
@@ -185,7 +184,7 @@ const Cart = () => {
               >
                 <img
                   class="w-14 object-contain"
-                  src="/images/oG8xsl3xsOkwkMsrLGKM4.png"
+                  src="https://pixelbag.net/wp-content/uploads/2022/03/fedex-vector-logo-768x768.jpg"
                   alt=""
                 />
                 <div class="ml-5">
@@ -343,7 +342,9 @@ const Cart = () => {
             <div class="mt-6 border-t border-b py-2">
               <div class="flex items-center justify-between">
                 <p class="text-sm font-medium text-gray-900">Subtotal</p>
-                <p class="font-semibold text-gray-900">${productSubTotal}</p>
+                <p class="font-semibold text-gray-900">
+                  ${calculateCartTotal(user)}
+                </p>
               </div>
               <div class="flex items-center justify-between">
                 <p class="text-sm font-medium text-gray-900">Shipping</p>
@@ -353,11 +354,14 @@ const Cart = () => {
             <div class="mt-6 flex items-center justify-between">
               <p class="text-sm font-medium text-gray-900">Total</p>
               <p class="text-2xl font-semibold text-gray-900">
-                ${productSubTotal + 8}
+                ${calculateCartTotal(user) + 8}
               </p>
             </div>
           </div>
-          <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
+          <button
+            class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white"
+            onClick={() => createOrder(user)}
+          >
             Place Order
           </button>
         </div>

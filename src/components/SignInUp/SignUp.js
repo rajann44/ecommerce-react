@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signupAndUploadUserInfoToDb } from "../../firebase/Database/Users";
+import { signupAndUploadUserInfoToDb } from "../../firebase/Database/UsersFirebase";
 
 const SignUp = () => {
   const navigate = useNavigate();
