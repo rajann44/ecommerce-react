@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { UserContext } from "../context/UserProvider";
 import { getOrderDetailsFromDb } from "../firebase/Database/OrdersFirebase";
 
 const Order = () => {
+  const { user } = useContext(UserContext);
   const [orderDetails, setOrderDetails] = useState([]);
 
   useEffect(() => {
     async function getOrderDetails() {
       setOrderDetails([]); //I have explicitly set it empty, so that there is no previous state stored (to avoid duplicate cards on screen)
-      const orderData = await getOrderDetailsFromDb();
+      const orderData = await getOrderDetailsFromDb(user.uid);
+      console.log(orderData);
       orderData.forEach((order) => {
-        setOrderDetails((prv) => [...prv, { ...order.data() }]);
+        setOrderDetails((prv) => [...prv, { ...order }]);
       });
     }
     getOrderDetails();

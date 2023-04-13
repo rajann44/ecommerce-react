@@ -1,4 +1,10 @@
-import { addDoc, getDocs, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  getDocs,
+  query,
+  serverTimestamp,
+  where,
+} from "firebase/firestore";
 import { ordersReference } from "../FireApp";
 
 export const calculateCartTotal = (user) => {
@@ -25,8 +31,17 @@ export const createOrder = async (userData) => {
   }
 };
 
-//Get list of all users
-export const getOrderDetailsFromDb = async () => {
-  const orderList = await getDocs(ordersReference);
-  return orderList;
+export const getOrderDetailsFromDb = async (userID) => {
+  // let allOrders = null;
+  // const queryResult = query(ordersReference, where("uid", "==", userID));
+  // const querySnapshot = await getDocs(queryResult);
+  // querySnapshot.forEach(async (singleResult) => {
+  //   allOrders = console.log(singleResult.data());
+  // });
+  // return allOrders;
+  const queryResult = query(ordersReference, where("uid", "==", userID));
+  const querySnapshot = await getDocs(queryResult);
+  const promises = querySnapshot.docs.map((doc) => doc.data());
+  const allOrders = await Promise.all(promises);
+  return allOrders;
 };
