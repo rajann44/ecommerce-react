@@ -10,7 +10,7 @@ const UserProvider = (props) => {
 
   // logout function to clear the user from state
   const logout = () => {
-    setUser(null);
+    setUser({ email: "", password: "", loginStatus: false, products: [] });
   };
 
   //This method get called in Login Component
