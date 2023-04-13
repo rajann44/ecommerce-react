@@ -19,8 +19,17 @@ const NotificationProvider = (props) => {
     }, 5000);
   };
 
+  const closeButton = () => {
+    setNotification({
+      message: "Dummy message",
+      triggerNotification: false,
+    });
+  };
+
   return (
-    <NotificationContext.Provider value={{ notification, triggerNotification }}>
+    <NotificationContext.Provider
+      value={{ notification, triggerNotification, closeButton }}
+    >
       {props.children}
     </NotificationContext.Provider>
   );

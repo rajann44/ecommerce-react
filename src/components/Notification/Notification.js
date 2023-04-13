@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { NotificationContext } from "../../context/NotificationProvider";
 
 const Notification = () => {
-  const { notification } = useContext(NotificationContext);
+  const { notification, closeButton } = useContext(NotificationContext);
 
   return (
     <div
@@ -36,10 +36,10 @@ const Notification = () => {
                   {notification?.message}
                 </p>
                 <p class="mt-1 text-sm text-gray-500">
-                  Anyone with a link can now view this file.
+                  Shop original art from global artists online.
                 </p>
               </div>
-              <div class="ml-4 flex-shrink-0 flex">
+              <div class="ml-4 flex-shrink-0 flex" onClick={closeButton}>
                 <button class="bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                   <span class="sr-only">Close</span>
                   <svg

@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { NotificationContext } from "../../context/NotificationProvider";
 import { UserContext } from "../../context/UserProvider";
 
 const ProfileFlyoutMenu = () => {
+  const { triggerNotification } = useContext(NotificationContext);
   const [isToggled, setIsToggled] = useState(false);
   const { user, logout } = useContext(UserContext);
   const navigate = useNavigate();
@@ -60,6 +62,7 @@ const ProfileFlyoutMenu = () => {
       <div
         class="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-md sm:px-0"
         style={{ display: isToggled ? "" : "none" }}
+        onClick={handleFlyOutToggle}
       >
         <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
           <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
@@ -136,6 +139,7 @@ const ProfileFlyoutMenu = () => {
                   className="inline-flex w-full items-center bg-red-500 text-cyan-50 border-0 py-1 px-3 mx-2 focus:outline-none hover:bg-indigo-500 rounded text-base mt-4 md:mt-0"
                   onClick={() => {
                     logout();
+                    triggerNotification("Logout Successful");
                     navigate("/");
                   }}
                 >
