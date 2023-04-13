@@ -4,7 +4,7 @@ import ProfileFlyoutMenu from "./Menu/ProfileFlyoutMenu";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 z-50 text-gray-600 bg-white body-font">
+    <header className="text-gray-600 bg-white body-font">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
           <a className="mr-5 hover:text-gray-900">Category 1</a>
