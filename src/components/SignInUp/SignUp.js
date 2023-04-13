@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { NotificationContext } from "../../context/NotificationProvider";
 import { signupAndUploadUserInfoToDb } from "../../firebase/Database/UsersFirebase";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const { triggerNotification } = useContext(NotificationContext);
 
   const [signupForm, setSignupForm] = useState({
     email: "",
@@ -19,6 +21,7 @@ const SignUp = () => {
       if (result !== null) {
         navigate("/signin");
         console.log("User signup successful");
+        triggerNotification("Signup Successful, Please Login");
       } else {
         console.log("User signup failed");
       }
