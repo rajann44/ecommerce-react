@@ -8,14 +8,11 @@ import Cart from "./components/Cart";
 import SignIn from "./components/SignInUp/SignIn";
 import SignUp from "./components/SignInUp/SignUp";
 import TopBanner from "./components/Banner/TopBanner";
-import BottomBanner from "./components/Banner/BottomBanner";
 import UserProvider from "./context/UserProvider";
 import Order from "./components/Order";
 import Notification from "./components/Notification/Notification";
-import NotificationProvider, {
-  NotificationContext,
-} from "./context/NotificationProvider";
-import { useContext } from "react";
+import NotificationProvider from "./context/NotificationProvider";
+import Marketing from "./components/Banner/Marketing";
 
 function App() {
   return (
@@ -29,7 +26,7 @@ function App() {
             element={[
               <TopBanner></TopBanner>,
               <Products></Products>,
-              <BottomBanner></BottomBanner>,
+              <Marketing></Marketing>,
             ]}
           ></Route>
           <Route
@@ -41,6 +38,7 @@ function App() {
           <Route path="/cart" element={<Cart></Cart>}></Route>
           <Route path="/order" element={<Order></Order>}></Route>
         </Routes>
+
         <Footer></Footer>
       </NotificationProvider>
     </UserProvider>
