@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { UserContext } from "../context/UserProvider";
 
 const ProductDetail = () => {
@@ -135,7 +135,7 @@ const ProductDetail = () => {
               to the scene, evoking the glimmer of sunlight on the water's
               surface.
             </p>
-            <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
+            {/* <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
               <div class="flex">
                 <span class="mr-3">Color</span>
                 <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
@@ -166,8 +166,8 @@ const ProductDetail = () => {
                   </span>
                 </div>
               </div>
-            </div>
-            <div class="flex">
+            </div> */}
+            <div class="flex mt-4">
               <span class="title-font font-medium text-2xl text-gray-900">
                 {propsData.price}
               </span>

@@ -51,6 +51,7 @@ export const signupAndUploadUserInfoToDb = async (userInfo) => {
       await addDoc(usersReference, {
         email: userInfo.email,
         password: hash,
+        uid: Math.random().toString(36).slice(2),
       });
       console.log("User signup successful");
       return true;

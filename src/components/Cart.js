@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { UserContext } from "../context/UserProvider";
-
 const Cart = () => {
   const { user, removeProductFromCart } = useContext(UserContext);
   let productSubTotal = user.products.reduce(

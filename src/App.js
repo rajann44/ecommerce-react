@@ -10,6 +10,7 @@ import SignUp from "./components/SignInUp/SignUp";
 import TopBanner from "./components/Banner/TopBanner";
 import BottomBanner from "./components/Banner/BottomBanner";
 import UserProvider from "./context/UserProvider";
+import Order from "./components/Order";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/signin" element={<SignIn></SignIn>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="/cart" element={<Cart></Cart>}></Route>
+        <Route path="/order" element={<Order></Order>}></Route>
       </Routes>
       <Footer></Footer>
     </UserProvider>

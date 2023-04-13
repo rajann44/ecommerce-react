@@ -4,6 +4,7 @@ const UserProvider = (props) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
+    uid: "",
     loginStatus: false,
     products: [],
   });
@@ -28,12 +29,32 @@ const UserProvider = (props) => {
 
   //Remove product from user, so that its updated in cart
   const removeProductFromCart = (productId) => {
-    setUser((prevUserData) => ({
-      ...prevUserData,
-      products: prevUserData.products.filter(
-        (product) => product.id !== productId
-      ),
-    }));
+    setUser((prevUserData) => {
+      const index = prevUserData.products.findIndex(
+        (product) => product.id === productId
+      );
+
+      if (index !== -1) {
+        const updatedProducts = [...prevUserData.products];
+        const productToRemove = updatedProducts[index];
+
+        // Remove only one instance of the product from the array
+        updatedProducts.splice(index, 1);
+
+        // If there are still other instances of the product, update its quantity
+        if (productToRemove.quantity > 1) {
+          productToRemove.quantity--;
+          updatedProducts.splice(index, 0, productToRemove);
+        }
+
+        return {
+          ...prevUserData,
+          products: updatedProducts,
+        };
+      }
+
+      return prevUserData;
+    });
   };
 
   return (
