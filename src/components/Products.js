@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getOrderDetailsFromDbForSpecificUser } from "../firebase/Database/OrdersFirebase";
 import { getProductDetailsFromDb } from "../firebase/Database/ProductsFirebase";
 
 const Products = () => {
