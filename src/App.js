@@ -1,21 +1,21 @@
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Products from "./components/Products";
-import ProductDetail from "./components/ProductDetail";
+import Products from "./components/ProductsList/ProductsHome";
+import ProductDetail from "./components/Pages/ProductDetail";
 import { Route, Routes } from "react-router-dom";
-import Cart from "./components/Cart";
+import Cart from "./components/Pages/Cart";
 import SignIn from "./components/SignInUp/SignIn";
 import SignUp from "./components/SignInUp/SignUp";
 import TopBanner from "./components/Banner/TopBanner";
 import UserProvider from "./context/UserProvider";
-import Order from "./components/Order";
+import Order from "./components/Pages/Order";
 import Notification from "./components/Notification/Notification";
 import NotificationProvider from "./context/NotificationProvider";
 import Marketing from "./components/Banner/Marketing";
-import Category1 from "./components/Products/Category1";
-import Category2 from "./components/Products/Category2";
-import Category3 from "./components/Products/Category3";
+import Category1 from "./components/ProductsList/Category1";
+import Category2 from "./components/ProductsList/Category2";
+import Category3 from "./components/ProductsList/Category3";
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getProductDetailsFromDb } from "../firebase/Database/ProductsFirebase";
+import { getProductDetailsFromDb } from "../../firebase/Database/ProductsFirebase";
 
 const Products = () => {
   const [productDetails, setProductDetails] = useState([]);

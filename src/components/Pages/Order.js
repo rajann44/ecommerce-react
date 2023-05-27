@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../context/UserProvider";
-import { getOrderDetailsFromDb } from "../firebase/Database/OrdersFirebase";
+import { UserContext } from "../../context/UserProvider";
+import { getOrderDetailsFromDb } from "../../firebase/Database/OrdersFirebase";
 
 const Order = () => {
   const { user } = useContext(UserContext);

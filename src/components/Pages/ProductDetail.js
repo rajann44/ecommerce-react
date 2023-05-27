@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
-import { UserContext } from "../context/UserProvider";
+import { UserContext } from "../../context/UserProvider";
 
 const ProductDetail = () => {
   const { user } = useContext(UserContext);

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { UserContext } from "../context/UserProvider";
+import { UserContext } from "../../context/UserProvider";
 import {
   calculateCartTotal,
   createOrder,
-} from "../firebase/Database/OrdersFirebase";
+} from "../../firebase/Database/OrdersFirebase";
 const Cart = () => {
   const { user, removeProductFromCart } = useContext(UserContext);
 
