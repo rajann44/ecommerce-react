@@ -22,6 +22,7 @@ const SignIn = () => {
         navigate("/");
       } else {
         login({ loginStatus: false });
+        triggerNotification("Invalid User Details");
       }
     });
   };

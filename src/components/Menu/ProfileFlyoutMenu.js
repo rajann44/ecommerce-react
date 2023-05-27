@@ -91,7 +91,7 @@ const ProfileFlyoutMenu = () => {
                   <p class="text-base font-medium text-gray-900">
                     You have
                     <span class="inline-flex items-center justify-center px-2 py-1 mx-1 text-xs font-bold leading-none text-red-100 bg-blue-500 rounded-full">
-                      {user?.products.length}
+                      {user.products?.length}
                     </span>
                     items in Cart
                   </p>

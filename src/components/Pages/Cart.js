@@ -95,7 +95,7 @@ const Cart = () => {
             Check your items. And select a suitable shipping method.
           </p>
           <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
-            {user.products.length
+            {user.products?.length
               ? user.products.map((productInCart, index) => (
                   <div
                     class="flex flex-col rounded-lg bg-white sm:flex-row"
