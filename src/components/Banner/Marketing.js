@@ -16,7 +16,7 @@ const Marketing = () => {
           <div className="mt-8 sm:w-full sm:max-w-md xl:mt-0 xl:ml-8">
             <form className="sm:flex">
               <label htmlFor="email-address" className="sr-only">
-                Email address
+                Email Address
               </label>
               <input
                 id="email-address"
